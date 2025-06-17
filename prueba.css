@@ -397,6 +397,62 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Sección Registro ONG */
+.registro-section {
+  padding: 3rem 2rem;
+  background-color: #f8fafc;
+  animation: fadeInUp 1s ease-out;
+}
+
+.formulario-ong {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+form fieldset {
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: #ffffff;
+}
+
+form legend {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+form input {
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+form .btn {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+form .btn:hover {
+  background-color: #1e40af;
+}
+
+/* Animación */
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(40px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
     .nav-links {
         display: none;
     }

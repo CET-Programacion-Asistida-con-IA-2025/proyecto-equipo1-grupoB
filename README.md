@@ -1,34 +1,15 @@
 ## Grupo B - Equipo 1
-_Curso de Programación Asistida con IA - Chicas en Tecnología_ 🚀
 
-En este repositorio, se presenta el sitio web realizado durante el curso de programación frontend de 
+EL proposósito de nuestra página web es crear una red de networking entre organizaciones sociales no gubernamentales (ONGs). 
 
+La misma contará con:
+  - Un espacio para crear nuevos usuarios: como nuestra página es de uso estructo de ONGs, al crear un usuario se pedirá cierta
+    información legal para corroborar la existencia efectiva de la organización y no poner en riesgo de seguridad al resto de los usuarios.
+  - A su vez, contará con un espacio de "posteo" como si fuera un feed de una red social (como instagram o facebook) donde los usuarios
+    pueden compartir aquellos servicios y/o productos que brindan a la sociedad. Además el feed permite a los usuarios publicar la necesidad     de ayuda con determinada situación y, de esta manera, posibilitar la interacción entre las ONGs.
+  - Agregado a esto, nuestra página contará con un espacio de "comunidad" donde cada usuario puede presentarse, estableciendo los objetivos
+    y las problemáticas con las que busca colaborar y brindar una solución.
 
-### 📄 Entregas
-**Entrega #1**: planificación de la solución y primeros resultados que obtengamos con la IA:
+Esperamos que nuestra página pueda contribuir a seguir trabajando por un mundo mejor!
 
-📝 Edición del Archivo README incluyendo:
-- Definición de la problemática que eligieron abordar
-- Relación con los *Objetivos de Desarrollo Sostenible (ODS)*[^1]
-- Explicación de la solución tecnológica que están desarrollando
-> [!TIP]
-> Aprovechen los [formatos del README](https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) para escribir diferentes secciones
-
-🎨 Moodboard
-
-🧩 Archivos generados con asistencia de IA: ```index.html```, ```style.css```, ```script.js```
-
-
-**Entrega #2 (Final)**: se esperan modificaciones en el código respecto a la entrega anterior, que pueden incluir nuevos archivos o extensión de los existentes (debe haber al menos un archivo de cada lenguaje visto - HTML, CSS y Javascript)
-
-💡 Es una buena idea llevar un registro de lo que cambiamos. Por ejemplo
-```
-- Agregamos Bootstrap para el carrousel de imágenes...
-- Modificamos el texto de la sección de bienvenida...
-- Transformamos los textos sobre redes sociales en links...
-```
-
-Ahora si, ¡A programar! 🚀
-
-
-[^1]: Los Objetivos de Desarrollo Sostenible u Objetivos Globales, también conocidos como Agenda 2030, son 17 objetivos globales interconectados diseñados para ser un «plan para lograr un futuro mejor y más sostenible para todos». Más información en https://www.un.org/sustainabledevelopment/es/objetivos-de-desarrollo-sostenible/
+Sofi, Meli y Guada

@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red ONGs - Networking e Incidencia Social</title>
+    <style>
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f8fafc;
+}
+
+/* Navegación */
+.navbar {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+/* Sección Hero */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.slide1 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.slide2 {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.slide3 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Sección Feed */
+.feed-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #1e293b;
+}
+
+.feed-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Formulario de posts */
+.post-form {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.btn {
+    background: #2563eb;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+}
+
+/* Container de posts */
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.post {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.post:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.post-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.post-info h4 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 1.1rem;
+}
+
+.post-date {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.post-content {
+    margin-bottom: 20px;
+}
+
+.post-content h4 {
+    margin-bottom: 10px;
+    color: #1e293b;
+    font-size: 1.2rem;
+}
+
+.post-content p {
+    color: #475569;
+    line-height: 1.6;
+}
+
+.post-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.post-btn {
+    background: #f1f5f9;
+    color: #475569;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.post-btn:hover {
+    background: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+/* Sección Comunidad */
+.community-section {
+    padding: 80px 20px;
+    background: #f8fafc;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.organizations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.org-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.org-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.org-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 20px;
+}
+
+.org-name {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #1e293b;
+}
+
+.org-description {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.org-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+    padding: 20px 0;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.org-btn {
+    background: #2563eb;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.org-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+
+/* Sección Registro ONG */
+.registro-section {
+  padding: 3rem 2rem;
+  background-color: #f8fafc;
+  animation: fadeInUp 1s ease-out;
+}
+
+.formulario-ong {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+form fieldset {
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: #ffffff;
+}
+
+form legend {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+form input {
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+form .btn {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+form .btn:hover {
+  background-color: #1e40af;
+}
+
+/* Animación */
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(40px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@media (max-width: 768px) {
+    /* Sección Registro ONG */
+.registro-section {
+  padding: 3rem 2rem;
+  background-color: #f8fafc;
+  animation: fadeInUp 1s ease-out;
+}
+
+.formulario-ong {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+form fieldset {
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background: #ffffff;
+}
+
+form legend {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #111827;
+}
+
+form input {
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+form .btn {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+form .btn:hover {
+  background-color: #1e40af;
+}
+
+/* Animación */
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(40px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+    .nav-links {
+        display: none;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .feed-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .post-form {
+        position: static;
+    }
+    
+    .organizations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 0 15px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .feed-section,
+    .community-section {
+        padding: 60px 15px;
+    }
+    
+    .org-card {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🤝 Red ONGs</div>
+            <ul class="nav-links">
+                <li><a href="#registro">Registro</a></li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#feed">Feed</a></li>
+                <li><a href="#comunidad">Comunidad</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sección Hero con Carrusel -->
+    <section id="inicio" class="hero">
+        <div class="carousel">
+            <div class="carousel-slide slide1 active"></div>
+            <div class="carousel-slide slide2"></div>
+            <div class="carousel-slide slide3"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Red ONGs</h1>
+            <h2 class="hero-subtitle">Conectando Organizaciones, Transformando Comunidades</h2>
+            <p class="hero-description">
+                Somos una plataforma de networking diseñada específicamente para organizaciones no gubernamentales 
+                enfocadas en la incidencia social. Facilitamos la colaboración, el intercambio de recursos y 
+                el fortalecimiento del impacto colectivo en nuestras comunidades.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección de Feed -->
+    <section id="feed" class="feed-section">
+        <h2 class="section-title">📢 Feed de Noticias y Colaboración</h2>
+        <div class="feed-container">
+            <!-- Formulario para crear posts -->
+            <div class="post-form">
+                <h3 style="color: #2563eb; margin-bottom: 1.5rem;">Comparte tu proyecto o noticia</h3>
+                <div class="form-group">
+                    <label for="org-name">Nombre de tu Organización</label>
+                    <input type="text" id="org-name" placeholder="Ej: Fundación Esperanza">
+                </div>
+                <div class="form-group">
+                    <label for="post-title">Título del Post</label>
+                    <input type="text" id="post-title" placeholder="Ej: Nueva campaña de educación ambiental">
+                </div>
+                <div class="form-group">
+                    <label for="post-content">Contenido</label>
+                    <textarea id="post-content" rows="4" placeholder="Comparte detalles sobre tu proyecto, necesidades de colaboración, o noticias relevantes..."></textarea>
+                </div>
+                <button class="btn" onclick="createPost()">Publicar</button>
+            </div>
+
+            <!-- Container de posts -->
+            <div id="posts-container" class="posts-container">
+                <!-- Posts existentes -->
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-avatar">EC</div>
+                        <div class="post-info">
+                            <h4>EcoVida Colombia</h4>
+                            <div class="post-date">Hace 2 horas</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h4>🌱 Campaña de Reforestación Urbana</h4>
+                        <p>Buscamos alianzas con organizaciones locales para nuestra nueva campaña de reforestación en Bogotá. Tenemos recursos para plantar 500 árboles y necesitamos voluntarios. ¿Tu organización se suma?</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-btn">👍 Me gusta (12)</button>
+                        <button class="post-btn">💬 Comentar</button>
+                        <button class="post-btn">🤝 Colaborar</button>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-avatar">FE</div>
+                        <div class="post-info">
+                            <h4>Fundación Educación para Todos</h4>
+                            <div class="post-date">Hace 5 horas</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h4>📚 Donación de Material Educativo</h4>
+                        <p>Tenemos disponibles 200 libros de texto y material escolar para donar a organizaciones que trabajen con niños en situación de vulnerabilidad. Primera convocatoria abierta hasta el viernes.</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-btn">👍 Me gusta (8)</button>
+                        <button class="post-btn">💬 Comentar</button>
+                        <button class="post-btn">📞 Contactar</button>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-avatar">AS</div>
+                        <div class="post-info">
+                            <h4>Alianza Salud Comunitaria</h4>
+                            <div class="post-date">Hace 1 día</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h4>🏥 Jornada de Salud Gratuita</h4>
+                        <p>Organizamos jornada de salud gratuita el próximo sábado. Necesitamos apoyo logístico y difusión. También buscamos organizaciones que puedan aportar refrigerios para 300 personas.</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-btn">👍 Me gusta (15)</button>
+                        <button class="post-btn">💬 Comentar</button>
+                        <button class="post-btn">🤝 Colaborar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Comunidad -->
+    <section id="comunidad" class="community-section">
+        <h2 class="section-title">🌍 Nuestra Comunidad de ONGs</h2>
+        <div class="organizations-grid">
+            <div class="org-card">
+                <div class="org-logo">EV</div>
+                <h3 class="org-name">EcoVida Colombia</h3>
+                <p class="org-description">Organización dedicada a la conservación ambiental y educación ecológica en comunidades urbanas y rurales.</p>
+                <div class="org-stats">
+                    <div class="stat">
+                        <div class="stat-number">45</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">12K</div>
+                        <div class="stat-label">Beneficiarios</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Alianzas</div>
+                    </div>
+                </div>
+                <button class="org-btn">Conectar</button>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">FE</div>
+                <h3 class="org-name">Fundación Educación para Todos</h3>
+                <p class="org-description">Promovemos el acceso a educación de calidad para niños y jóvenes en situación de vulnerabilidad social.</p>
+                <div class="org-stats">
+                    <div class="stat">
+                        <div class="stat-number">32</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">8.5K</div>
+                        <div class="stat-label">Beneficiarios</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Alianzas</div>
+                    </div>
+                </div>
+                <button class="org-btn">Conectar</button>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">AS</div>
+                <h3 class="org-name">Alianza Salud Comunitaria</h3>
+                <p class="org-description">Red de profesionales de la salud que brindan atención médica gratuita en comunidades de bajos recursos.</p>
+                <div class="org-stats">
+                    <div class="stat">
+                        <div class="stat-number">28</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15K</div>
+                        <div class="stat-label">Beneficiarios</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">22</div>
+                        <div class="stat-label">Alianzas</div>
+                    </div>
+                </div>
+                <button class="org-btn">Conectar</button>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">DH</div>
+                <h3 class="org-name">Defensores de Derechos Humanos</h3>
+                <p class="org-description">Organización enfocada en la defensa y promoción de los derechos humanos fundamentales en América Latina.</p>
+                <div class="org-stats">
+                    <div class="stat">
+                        <div class="stat-number">67</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">25K</div>
+                        <div class="stat-label">Beneficiarios</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">35</div>
+                        <div class="stat-label">Alianzas</div>
+                    </div>
+                </div>
+                <button class="org-btn">Conectar</button>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">TI</div>
+                <h3 class="org-name">Tecnología Inclusiva</h3>
+                <p class="org-description">Facilitamos el acceso a la tecnología y alfabetización digital en comunidades rurales y urbanas marginadas.</p>
+                <div class="org-stats">
+                    <div class="stat">
+                        <div class="stat-number">19</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">6.2K</div>
+                        <div class="stat-label">Beneficiarios</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">11</div>
+                        <div class="stat-label">Alianzas</div>
+                    </div>
+                </div>
+                <button class="org-btn">Conectar</button>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">MJ</div>
+                <h3 class="org-name">Mujeres y Justicia</h3>
+                <p class="org-description">Empoderamos a mujeres a través de programas de capacitación, microcréditos y defensa de sus derechos.</p>
+                <div class="org-stats">
+                    <div class="stat">
+                        <div class="stat-number">41</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">9.8K</div>
+                        <div class="stat-label">Beneficiarios</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">18</div>
+                        <div class="stat-label">Alianzas</div>
+                    </div>
+                </div>
+                <button class="org-btn">Conectar</button>
+            </div>
+        </div>
+    </section>
+
+  
+    <script src="script.js"></script>
+    <!-- Sección de Registro de ONG -->
+<section id="registro" class="registro-section">
+  <h2 class="section-title">📝 Registro de Nueva ONG</h2>
+  <form id="form-ong" class="formulario-ong">
+    <!-- Información básica y legal -->
+    <fieldset>
+      <legend>Información básica y legal</legend>
+      <input type="text" placeholder="Nombre legal de la ONG" required>
+      <input type="text" placeholder="Nombre público o abreviado">
+      <input type="text" placeholder="País y ciudad sede" required>
+      <input type="text" placeholder="CUIT o número de registro legal" required>
+      <input type="text" placeholder="Año de fundación" required>
+      <input type="url" placeholder="Sitio web oficial (opcional)">
+      <input type="email" placeholder="Email institucional de contacto" required>
+      <input type="tel" placeholder="Teléfono institucional">
+      <input type="text" placeholder="Redes sociales (Instagram, Facebook, etc.)">
+    </fieldset>
+
+    <!-- Información de contacto -->
+    <fieldset>
+      <legend>Información de contacto</legend>
+      <input type="text" placeholder="Nombre y apellido" required>
+      <input type="text" placeholder="Cargo dentro de la ONG" required>
+      <input type="email" placeholder="Email personal o de trabajo" required>
+      <input type="tel" placeholder="Teléfono (opcional)">
+    </fieldset>
+
+    <!-- Información sobre el trabajo de la ONG -->
+    <fieldset>
+      <legend>Sobre el trabajo de la ONG</legend>
+      <input type="text" placeholder="Misión / Visión">
+      <input type="text" placeholder="Áreas temáticas de trabajo">
+      <input type="text" placeholder="Población objetivo o comunidades">
+      <input type="text" placeholder="Alcance geográfico (local, nacional...)">
+      <input type="text" placeholder="Tipos de actividades realizadas">
+      <input type="text" placeholder="ODS con los que se identifican">
+    </fieldset>
+
+    <!-- Preferencias y objetivos -->
+    <fieldset>
+      <legend>Preferencias y objetivos</legend>
+      <input type="text" placeholder="¿Qué busca dentro de la plataforma?">
+      <input type="text" placeholder="¿Está abierta a colaborar con otras organizaciones?">
+      <input type="text" placeholder="Tipo de colaboraciones que ofrece o busca">
+    </fieldset>
+
+    <button type="submit" class="btn">Registrar ONG</button>
+  </form>
+</section>
+
+</body>
+</html>

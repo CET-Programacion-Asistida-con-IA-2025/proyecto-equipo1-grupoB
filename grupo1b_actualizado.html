@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red ONGs - Networking e Incidencia Social</title>
+    <link rel="stylesheet" href="prueba.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🤝 Red ONGs</div>
+            <ul class="nav-links">
+                <li><a href="registro_completo.html" target="_blank">Registro</a></li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#feed">Feed</a></li>
+                <li><a href="#comunidad">Comunidad</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sección Hero con Carrusel -->
+    <section id="inicio" class="hero">
+        <div class="carousel">
+            <div class="carousel-slide slide1 active"></div>
+            <div class="carousel-slide slide2"></div>
+            <div class="carousel-slide slide3"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Red ONGs</h1>
+            <h2 class="hero-subtitle">Conectando Organizaciones, Transformando Comunidades</h2>
+            <p class="hero-description">
+                Somos una plataforma de networking diseñada específicamente para organizaciones no gubernamentales 
+                enfocadas en la incidencia social. Facilitamos la colaboración, el intercambio de recursos y 
+                el fortalecimiento del impacto colectivo en nuestras comunidades.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección de Feed -->
+    <section id="feed" class="feed-section">
+        <h2 class="section-title">📢 Feed de Noticias y Colaboración</h2>
+        <div class="feed-container">
+            <!-- Formulario para crear posts -->
+            <div class="post-form">
+                <h3 style="color: #2563eb; margin-bottom: 1.5rem;">Comparte tu proyecto o noticia</h3>
+                <div class="form-group">
+                    <label for="org-name">Nombre de tu Organización</label>
+                    <input type="text" id="org-name" placeholder="Ej: Fundación Esperanza">
+                </div>
+                <div class="form-group">
+                    <label for="post-title">Título del Post</label>
+                    <input type="text" id="post-title" placeholder="Ej: Nueva campaña de educación ambiental">
+                </div>
+                <div class="form-group">
+                    <label for="post-content">Contenido</label>
+                    <textarea id="post-content" rows="4" placeholder="Comparte detalles sobre tu proyecto, necesidades de colaboración, o noticias relevantes..."></textarea>
+                </div>
+                <button class="btn" onclick="createPost()">Publicar</button>
+            </div>
+
+            <!-- Container de posts -->
+            <div id="posts-container" class="posts-container">
+                <!-- Posts existentes -->
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-avatar">EC</div>
+                        <div class="post-info">
+                            <h4>EcoVida Colombia</h4>
+                            <div class="post-date">Hace 2 horas</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h4>🌱 Campaña de Reforestación Urbana</h4>
+                        <p>Buscamos alianzas con organizaciones locales para nuestra nueva campaña de reforestación en Bogotá. Tenemos recursos para plantar 500 árboles y necesitamos voluntarios. ¿Tu organización se suma?</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-btn">👍 Me gusta (12)</button>
+                        <button class="post-btn">💬 Comentar</button>
+                        <button class="post-btn">🤝 Colaborar</button>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-avatar">FE</div>
+                        <div class="post-info">
+                            <h4>Fundación Educación para Todos</h4>
+                            <div class="post-date">Hace 5 horas</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h4>📚 Donación de Material Educativo</h4>
+                        <p>Tenemos disponibles 200 libros de texto y material escolar para donar a organizaciones que trabajen con niños en situación de vulnerabilidad. Primera convocatoria abierta hasta el viernes.</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-btn">👍 Me gusta (8)</button>
+                        <button class="post-btn">💬 Comentar</button>
+                        <button class="post-btn">📞 Contactar</button>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-avatar">AS</div>
+                        <div class="post-info">
+                            <h4>Alianza Salud Comunitaria</h4>
+                            <div class="post-date">Hace 1 día</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h4>🏥 Jornada de Salud Gratuita</h4>
+                        <p>Organizamos jornada de salud gratuita el próximo sábado. Necesitamos apoyo logístico y difusión. También buscamos organizaciones que puedan aportar refrigerios para 300 personas.</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-btn">👍 Me gusta (15)</button>
+                        <button class="post-btn">💬 Comentar</button>
+                        <button class="post-btn">🤝 Colaborar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Comunidad -->
+    <section id="comunidad" class="community-section">
+        <h2 class="section-title">🌍 Nuestra Comunidad de ONGs</h2>
+        <div class="organizations-grid">
+            <div class="org-card">
+                <div class="org-logo">EV</div>
+                <h3 class="org-name">EcoVida Colombia</h3>
+                <p class="org-description">Organización dedicada a la conservación ambiental y educación ecológica en comunidades urbanas y rurales.</p>
+                <div class="org-stats">
+                    <div class="stat">
+                        <div class="stat-number">45</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">12K</div>
+                        <div class="stat-label">Beneficiarios</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Alianzas</div>
+                    </div>
+                </div>
+                <button class="org-btn">Conectar</button>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">FE</div>
+                <h3 class="org-name">Fundación Educación para Todos</h3>
+                <p class="org-description">Promovemos el acceso a educación de calidad para niños y jóvenes en situación de vulnerabilidad social.</p>
+                <div class="org-stats">
+                    <div class="stat">
+                        <div class="stat-number">32</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">8.5K</div>
+                        <div class="stat-label">Beneficiarios</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Alianzas</div>
+                    </div>
+                </div>
+                <button class="org-btn">Conectar</button>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">AS</div>
+                <h3 class="org-name">Alianza Salud Comunitaria</h3>
+                <p class="org-description">Red de profesionales de la salud que brindan atención médica gratuita en comunidades de bajos recursos.</p>
+                <div class="org-stats">
+                    <div class="stat">
+                        <div class="stat-number">28</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15K</div>
+                        <div class="stat-label">Beneficiarios</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">22</div>
+                        <div class="stat-label">Alianzas</div>
+                    </div>
+                </div>
+                <button class="org-btn">Conectar</button>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">DH</div>
+                <h3 class="org-name">Defensores de Derechos Humanos</h3>
+                <p class="org-description">Organización enfocada en la defensa y promoción de los derechos humanos fundamentales en América Latina.</p>
+                <div class="org-stats">
+                    <div class="stat">
+                        <div class="stat-number">67</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">25K</div>
+                        <div class="stat-label">Beneficiarios</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">35</div>
+                        <div class="stat-label">Alianzas</div>
+                    </div>
+                </div>
+                <button class="org-btn">Conectar</button>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">TI</div>
+                <h3 class="org-name">Tecnología Inclusiva</h3>
+                <p class="org-description">Facilitamos el acceso a la tecnología y alfabetización digital en comunidades rurales y urbanas marginadas.</p>
+                <div class="org-stats">
+                    <div class="stat">
+                        <div class="stat-number">19</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">6.2K</div>
+                        <div class="stat-label">Beneficiarios</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">11</div>
+                        <div class="stat-label">Alianzas</div>
+                    </div>
+                </div>
+                <button class="org-btn">Conectar</button>
+            </div>
+
+            <div class="org-card">
+                <div class="org-logo">MJ</div>
+                <h3 class="org-name">Mujeres y Justicia</h3>
+                <p class="org-description">Empoderamos a mujeres a través de programas de capacitación, microcréditos y defensa de sus derechos.</p>
+                <div class="org-stats">
+                    <div class="stat">
+                        <div class="stat-number">41</div>
+                        <div class="stat-label">Proyectos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">9.8K</div>
+                        <div class="stat-label">Beneficiarios</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">18</div>
+                        <div class="stat-label">Alianzas</div>
+                    </div>
+                </div>
+                <button class="org-btn">Conectar</button>
+            </div>
+        </div>
+    </section>
+
+  
+    <script src="script.js"></script>
+    <!-- Sección de Registro de ONG -->
+<section id="registro" class="registro-section">
+  <h2 class="section-title">📝 Registro de Nueva ONG</h2>
+  <form id="form-ong" class="formulario-ong">
+    <!-- Información básica y legal -->
+    <fieldset>
+      <legend>Información básica y legal</legend>
+      <input type="text" placeholder="Nombre legal de la ONG" required>
+      <input type="text" placeholder="Nombre público o abreviado">
+      <input type="text" placeholder="País y ciudad sede" required>
+      <input type="text" placeholder="CUIT o número de registro legal" required>
+      <input type="text" placeholder="Año de fundación" required>
+      <input type="url" placeholder="Sitio web oficial (opcional)">
+      <input type="email" placeholder="Email institucional de contacto" required>
+      <input type="tel" placeholder="Teléfono institucional">
+      <input type="text" placeholder="Redes sociales (Instagram, Facebook, etc.)">
+    </fieldset>
+
+    <!-- Información de contacto -->
+    <fieldset>
+      <legend>Información de contacto</legend>
+      <input type="text" placeholder="Nombre y apellido" required>
+      <input type="text" placeholder="Cargo dentro de la ONG" required>
+      <input type="email" placeholder="Email personal o de trabajo" required>
+      <input type="tel" placeholder="Teléfono (opcional)">
+    </fieldset>
+
+    <!-- Información sobre el trabajo de la ONG -->
+    <fieldset>
+      <legend>Sobre el trabajo de la ONG</legend>
+      <input type="text" placeholder="Misión / Visión">
+      <input type="text" placeholder="Áreas temáticas de trabajo">
+      <input type="text" placeholder="Población objetivo o comunidades">
+      <input type="text" placeholder="Alcance geográfico (local, nacional...)">
+      <input type="text" placeholder="Tipos de actividades realizadas">
+      <input type="text" placeholder="ODS con los que se identifican">
+    </fieldset>
+
+    <!-- Preferencias y objetivos -->
+    <fieldset>
+      <legend>Preferencias y objetivos</legend>
+      <input type="text" placeholder="¿Qué busca dentro de la plataforma?">
+      <input type="text" placeholder="¿Está abierta a colaborar con otras organizaciones?">
+      <input type="text" placeholder="Tipo de colaboraciones que ofrece o busca">
+    </fieldset>
+
+    <button type="submit" class="btn">Registrar ONG</button>
+  </form>
+</section>
+
+</body>
+</html>

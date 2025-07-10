@@ -1,15 +1,31 @@
-/* Reset y estilos base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
+:root {
+  --azul-techo: #0092DD;
+  --violeta-techo: #6338AF;
+  --verde-oliva: #2FAC66;
+  --naranja-acento: #DF6A46;
+  --amarillo-suave: #F0E49C;
+  --blanco-hueso: #F9F6F1;
+  --negro-profundo: #000000;
+  --gris-suave: #64748b;
+  --gris-claro: #e5e7eb;
 }
 
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: #333;
-    background: #f8fafc;
+    background: #F9F6F1;
+
 }
 
 /* Navegación */
@@ -561,4 +577,26 @@ form .btn:hover {
     .org-card {
         padding: 20px;
     }
+    @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-anim="fade-up"] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+[data-anim="fade-up"].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 }

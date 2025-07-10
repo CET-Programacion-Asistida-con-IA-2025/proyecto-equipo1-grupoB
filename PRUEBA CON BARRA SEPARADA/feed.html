@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red ONGs - Feed</title>
+    <link rel="stylesheet" href="diseño.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🤝 Red ONGs</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="feed.html" class="active">Feed</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+                <li><a href="registro.html">Registro</a></li>
+                <li><a href="login.html">Iniciar Sesión</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Espaciador para el navbar fijo -->
+    <div style="height: 70px;"></div>
+
+    <!-- Sección de Feed -->
+    <section id="feed" class="feed-section">
+        <h2 class="section-title">📢 Feed de Noticias y Colaboración</h2>
+        <div class="feed-container">
+            <!-- Formulario para crear posts -->
+            <div class="post-form">
+                <h3 style="color: #2563eb; margin-bottom: 1.5rem;">Comparte tu proyecto o noticia</h3>
+                <div class="form-group">
+                    <label for="org-name">Nombre de tu Organización</label>
+                    <input type="text" id="org-name" placeholder="Ej: Fundación Esperanza">
+                </div>
+                <div class="form-group">
+                    <label for="post-title">Título del Post</label>
+                    <input type="text" id="post-title" placeholder="Ej: Nueva campaña de educación ambiental">
+                </div>
+                <div class="form-group">
+                    <label for="post-content">Contenido</label>
+                    <textarea id="post-content" rows="4" placeholder="Comparte detalles sobre tu proyecto, necesidades de colaboración, o noticias relevantes..."></textarea>
+                </div>
+                <button class="btn" onclick="createPost()">Publicar</button>
+            </div>
+
+            <!-- Container de posts -->
+            <div id="posts-container" class="posts-container">
+                <!-- Posts existentes -->
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-avatar">EC</div>
+                        <div class="post-info">
+                            <h4>EcoVida Colombia</h4>
+                            <div class="post-date">Hace 2 horas</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h4>🌱 Campaña de Reforestación Urbana</h4>
+                        <p>Buscamos alianzas con organizaciones locales para nuestra nueva campaña de reforestación en Bogotá. Tenemos recursos para plantar 500 árboles y necesitamos voluntarios. ¿Tu organización se suma?</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-btn">👍 Me gusta (12)</button>
+                        <button class="post-btn">💬 Comentar</button>
+                        <button class="post-btn">🤝 Colaborar</button>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-avatar">FE</div>
+                        <div class="post-info">
+                            <h4>Fundación Educación para Todos</h4>
+                            <div class="post-date">Hace 5 horas</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h4>📚 Donación de Material Educativo</h4>
+                        <p>Tenemos disponibles 200 libros de texto y material escolar para donar a organizaciones que trabajen con niños en situación de vulnerabilidad. Primera convocatoria abierta hasta el viernes.</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-btn">👍 Me gusta (8)</button>
+                        <button class="post-btn">💬 Comentar</button>
+                        <button class="post-btn">📞 Contactar</button>
+                    </div>
+                </div>
+
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-avatar">AS</div>
+                        <div class="post-info">
+                            <h4>Alianza Salud Comunitaria</h4>
+                            <div class="post-date">Hace 1 día</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <h4>🏥 Jornada de Salud Gratuita</h4>
+                        <p>Organizamos jornada de salud gratuita el próximo sábado. Necesitamos apoyo logístico y difusión. También buscamos organizaciones que puedan aportar refrigerios para 300 personas.</p>
+                    </div>
+                    <div class="post-actions">
+                        <button class="post-btn">👍 Me gusta (15)</button>
+                        <button class="post-btn">💬 Comentar</button>
+                        <button class="post-btn">🤝 Colaborar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

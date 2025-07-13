@@ -307,6 +307,7 @@
         </div>
     </div>
 
+    <script src="script.js"></script>
     <script>
         // Funcionalidad básica del formulario
         document.getElementById('login-form').addEventListener('submit', function(e) {
@@ -314,8 +315,8 @@
             
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            
-            
+            // La variable "auth" está definida en el script.js, por eso lo incluimos mas arriba        
+            auth.login(username, password);             
         });
 
         // Función para continuar como invitado

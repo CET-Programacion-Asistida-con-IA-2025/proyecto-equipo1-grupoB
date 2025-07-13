@@ -112,18 +112,19 @@ class AuthSystem {
     }
 
     loadUserSession() {
-    try {
-        const sessionData = localStorage.getItem('userSession');
-        if (sessionData) {
-            this.currentUser = JSON.parse(sessionData);
+        try {
+            const sessionData = localStorage.getItem('userSession');
+            if (sessionData) {
+                this.currentUser = JSON.parse(sessionData);
 
-            if (!this.isAuthenticated()) {
-                this.clearUserSession();
+                if (!this.isAuthenticated()) {
+                    this.clearUserSession();
+                }
             }
+        } catch (error) {
+            console.log('Error loading session:', error);
+            this.clearUserSession();
         }
-    } catch (error) {
-        console.log('Error loading session:', error);
-        this.clearUserSession();
     }
 
 
